@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { BookOpen, Search, Clock, ArrowRight, X, Sparkles, Heart } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+
 export default function Blog() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -86,7 +88,7 @@ export default function Blog() {
 
   React.useEffect(() => {
     const handleUpdate = () => {
-      fetch('http://localhost:5000/api/articles')
+      fetch(`${API_URL}/articles`)
         .then(res => {
           if (!res.ok) throw new Error();
           return res.json();

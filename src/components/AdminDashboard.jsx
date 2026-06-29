@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Mail, ShieldAlert, BarChart3, Database, Trash2, Plus, LogIn, Lock, BookOpen, Layers, MessageSquare, Award, Image as ImageIcon, Settings as SettingsIcon, Check, Edit2, Globe, ArrowRight, Eye, Save, Users, Cpu, Download, Bell } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 export default function AdminDashboard({ onClose }) {
   // Login Gate State

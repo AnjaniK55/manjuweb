@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+
 export default function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -39,7 +41,7 @@ export default function Testimonials() {
 
   React.useEffect(() => {
     const handleUpdate = () => {
-      fetch('http://localhost:5000/api/testimonials')
+      fetch(`${API_URL}/testimonials`)
         .then(res => {
           if (!res.ok) throw new Error();
           return res.json();

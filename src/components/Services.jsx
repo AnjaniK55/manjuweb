@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import * as Icons from 'lucide-react';
 import { motion } from 'framer-motion';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+
 export default function Services() {
   const [services, setServices] = useState([]);
 
@@ -91,7 +93,7 @@ export default function Services() {
 
   useEffect(() => {
     const handleUpdate = () => {
-      fetch('http://localhost:5000/api/services')
+      fetch(`${API_URL}/services`)
         .then(res => {
           if (!res.ok) throw new Error();
           return res.json();

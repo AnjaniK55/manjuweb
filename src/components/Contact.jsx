@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Send, Check, Mail, Clock, MapPin, Copy, Calendar } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+
 const InstagramIcon = ({ className }) => (
   <svg 
     viewBox="0 0 24 24" 
@@ -100,7 +102,7 @@ export default function Contact() {
     setIsSubmitting(true);
     
     try {
-      const res = await fetch('http://localhost:5000/api/messages', {
+      const res = await fetch(`${API_URL}/messages`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formState)

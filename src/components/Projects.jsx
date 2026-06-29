@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { ArrowUpRight, Code, Layout, Layers, Server, X, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+
 const GithubIcon = ({ className }) => (
   <svg 
     viewBox="0 0 24 24" 
@@ -142,7 +144,7 @@ export default function Projects() {
 
   React.useEffect(() => {
     const handleUpdate = () => {
-      fetch('http://localhost:5000/api/projects')
+      fetch(`${API_URL}/projects`)
         .then(res => {
           if (!res.ok) throw new Error();
           return res.json();
