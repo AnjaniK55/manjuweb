@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#D4AF37" />
+    
+    <!-- SEO Meta Tags -->
+    <title>Manju Web Agency | Elite Full Stack Development & Digital Architecture</title>
+    <meta name="description" content="Premium web development agency specializing in high-performance web applications, bespoke e-commerce platforms, and scalable architecture for global businesses." />
+    <meta name="keywords" content="Manju Web Agency, Full Stack Agency, React Development, Node.js, Custom Web Apps, Freelance Web Agency, International Clients" />
+    <meta name="author" content="Manju Web Agency" />
+    
+    <!-- Open Graph (Facebook/LinkedIn) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Manju Web Agency | Elite Full Stack Development" />
+    <meta property="og:description" content="High-performance custom web applications, scalable backends, and pixel-perfect frontends built for global scale." />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-zinc-950 text-zinc-100 font-sans antialiased overflow-x-hidden selection:bg-amber-500/30 selection:text-amber-200">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('SW Registered', reg))
+            .catch(err => console.log('SW Registration Failed', err));
+        });
+      }
+    </script>
+  </body>
+</html>

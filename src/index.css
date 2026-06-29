@@ -1,0 +1,368 @@
+@import "tailwindcss";
+
+:root {
+  /* Dark mode default variables */
+  --bg-primary: #050507;
+  --bg-secondary: #0a0a0f;
+  --bg-card: rgba(10, 10, 12, 0.45);
+  --bg-card-border: rgba(255, 255, 255, 0.08);
+  --border-color: rgba(255, 255, 255, 0.04);
+  --text-primary: #ffffff;
+  --text-secondary: #d4d4d8;
+  --text-secondary-muted: #a1a1aa;
+  --text-muted: #71717a;
+  
+  --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 50px rgba(212, 175, 55, 0.04);
+  --shadow-lg: 0 24px 80px rgba(0, 0, 0, 0.8);
+  
+  --gold-hover-border: rgba(212, 175, 55, 0.25);
+  
+  --button-sec-bg: rgba(255, 255, 255, 0.04);
+  --button-sec-border: rgba(255, 255, 255, 0.08);
+  --button-sec-text: #ffffff;
+  --button-sec-hover: rgba(255, 255, 255, 0.1);
+  --button-sec-hover-text: #ffffff;
+
+  --sidebar-bg: #07070b;
+  --header-bg: #0a0a0f;
+  --chatbot-bg: rgba(10, 10, 15, 0.98);
+  --chatbot-header: linear-gradient(to right, #0f0f14, #111118);
+  --chatbot-footer: #08080c;
+  --chatbot-bot-bubble: rgba(255, 255, 255, 0.04);
+  --chatbot-reply-btn: rgba(255, 255, 255, 0.02);
+  --chatbot-input-bg: rgba(255, 255, 255, 0.03);
+}
+
+.light {
+  /* Light mode overrides */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f8f9;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-card-border: rgba(0, 0, 0, 0.06);
+  --border-color: rgba(0, 0, 0, 0.06);
+  --text-primary: #111111;
+  --text-secondary: #27272a;
+  --text-secondary-muted: #52525b;
+  --text-muted: #71717a;
+  
+  --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 20px 40px rgba(0, 0, 0, 0.06), 0 0 50px rgba(212, 175, 55, 0.08);
+  --shadow-lg: 0 24px 80px rgba(0, 0, 0, 0.1);
+  
+  --gold-hover-border: rgba(212, 175, 55, 0.45);
+  
+  --button-sec-bg: #ffffff;
+  --button-sec-border: rgba(0, 0, 0, 0.1);
+  --button-sec-text: #111111;
+  --button-sec-hover: #f4f4f7;
+  --button-sec-hover-text: #000000;
+
+  --sidebar-bg: #eaeaea;
+  --header-bg: #f1f1f4;
+  --chatbot-bg: rgba(255, 255, 255, 0.98);
+  --chatbot-header: linear-gradient(to right, #f4f4f7, #ececf0);
+  --chatbot-footer: #f1f1f4;
+  --chatbot-bot-bubble: #eaeaea;
+  --chatbot-reply-btn: rgba(0, 0, 0, 0.03);
+  --chatbot-input-bg: rgba(0, 0, 0, 0.03);
+}
+
+.light .text-white {
+  color: var(--text-primary) !important;
+}
+
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+  
+  --color-gold-500: #D4AF37;
+  --color-gold-600: #C5A028;
+  --color-gold-400: #F3E5AB;
+
+  /* Overwrite Tailwind colors to dynamically map to active CSS variables */
+  --color-zinc-950: var(--bg-primary);
+  --color-zinc-900: var(--bg-secondary);
+  --color-zinc-800: var(--bg-card-border);
+  --color-zinc-100: var(--text-primary);
+  --color-zinc-300: var(--text-secondary);
+  --color-zinc-400: var(--text-secondary-muted);
+  --color-zinc-450: var(--text-secondary-muted);
+  --color-zinc-500: var(--text-muted);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Base body styles with subtle noise grain */
+body {
+  position: relative;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Subtle premium grain texture overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.02;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.light body::before {
+  opacity: 0.04;
+}
+
+/* Ambient animated mesh glows */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.08;
+  pointer-events: none;
+  animation: float 25s infinite alternate ease-in-out;
+}
+
+.light .glow-orb {
+  opacity: 0.04;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(40px, -60px) scale(1.15);
+  }
+  100% {
+    transform: translate(-30px, 30px) scale(0.9);
+  }
+}
+
+/* Premium custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.3);
+}
+
+/* Refined Glassmorphism Cards */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel:hover {
+  border-color: var(--gold-hover-border);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-6px);
+}
+
+/* Glow Borders utilities */
+.glow-border-gold {
+  position: relative;
+}
+
+.glow-border-gold::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(212, 175, 55, 0.08), rgba(255, 255, 255, 0.04));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+
+.light .glow-border-gold::after {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.04), rgba(212, 175, 55, 0.12), rgba(0, 0, 0, 0.04));
+}
+
+.glow-border-gold:hover::after {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.5), rgba(99, 102, 241, 0.2));
+}
+
+/* Luxury typography gradient text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, var(--text-primary) 10%, #F5D061 50%, #C5A028 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-dark-gradient {
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary-muted) 50%, var(--text-muted) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Slow Pulse Pulse Animation for WhatsApp icon */
+@keyframes pulseSlow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.02);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 3s infinite ease-in-out;
+}
+
+/* Specific background styles mapped to theme-aware colors */
+.bg-\[\#050507\] {
+  background-color: var(--bg-primary) !important;
+}
+
+.bg-\[\#07070b\] {
+  background-color: var(--sidebar-bg) !important;
+}
+
+.bg-\[\#0a0a0f\] {
+  background-color: var(--header-bg) !important;
+}
+
+.border-white\/5 {
+  border-color: var(--border-color) !important;
+}
+
+.bg-white\/\[0\.04\] {
+  background-color: var(--button-sec-bg) !important;
+}
+
+.border-white\/\[0\.06\] {
+  border-color: var(--border-color) !important;
+}
+
+/* Custom chatbot light/dark selectors */
+.chatbot-window {
+  background-color: var(--chatbot-bg) !important;
+  border-color: var(--border-color) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.chatbot-header {
+  background: var(--chatbot-header) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+.chatbot-bot-bubble {
+  background-color: var(--chatbot-bot-bubble) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.chatbot-footer {
+  background-color: var(--chatbot-footer) !important;
+  border-top: 1px solid var(--border-color) !important;
+}
+
+.chatbot-reply-btn {
+  background-color: var(--chatbot-reply-btn) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-secondary-muted) !important;
+}
+
+.chatbot-reply-btn:hover {
+  border-color: var(--gold-hover-border) !important;
+  color: var(--text-primary) !important;
+}
+
+.chatbot-input {
+  background-color: var(--chatbot-input-bg) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Secondary Button Custom States */
+.button-secondary-custom {
+  background-color: var(--button-sec-bg) !important;
+  border: 1px solid var(--button-sec-border) !important;
+  color: var(--button-sec-text) !important;
+  transition: all 0.3s ease;
+}
+
+.button-secondary-custom:hover {
+  background-color: var(--button-sec-hover) !important;
+  color: var(--button-sec-hover-text) !important;
+  border-color: var(--gold-hover-border) !important;
+}
+
+/* Let's Talk CTA button hover styling */
+#nav-cta-desktop:hover, #nav-cta-mobile:hover {
+  background: #ffffff !important;
+  color: #111111 !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15) !important;
+}
+
+.light #nav-cta-desktop:hover, .light #nav-cta-mobile:hover {
+  background: #050507 !important;
+  color: #ffffff !important;
+  border-color: rgba(212, 175, 55, 0.4) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Project category badge styles */
+.project-badge {
+  background-color: rgba(212, 175, 55, 0.1) !important;
+  border-color: rgba(212, 175, 55, 0.2) !important;
+  color: #d4af37 !important;
+}
+
+.light .project-badge {
+  background-color: rgba(197, 160, 40, 0.1) !important;
+  border-color: rgba(197, 160, 40, 0.2) !important;
+  color: #c5a028 !important;
+}
+
+/* Chatbot toggle button theme overrides */
+.chatbot-toggle-btn {
+  background-color: #0c0c12 !important;
+  border-color: #d4af37 !important;
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.25) !important;
+}
+
+.light .chatbot-toggle-btn {
+  background-color: #eaeaea !important;
+  border-color: #c5a028 !important;
+  box-shadow: 0 8px 30px rgba(197, 160, 40, 0.2) !important;
+}
+
+/* Custom Cursor styles to hide native pointer on desktop
+@media (min-width: 768px) {
+  body, a, button, input, select, textarea, [role="button"], .cursor-pointer {
+    cursor: none !important;
+  }
+}
+*/
