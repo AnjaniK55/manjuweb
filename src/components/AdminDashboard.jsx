@@ -130,28 +130,44 @@ export default function AdminDashboard({ onClose }) {
 
     // Protected fetch APIs
     if (activeTok) {
+      const checkAuthError = (status) => {
+        if (status === 401) {
+          console.warn('>>> [AUTH] Token expired or invalid. Logging out.');
+          localStorage.removeItem('admin_token');
+          setAuthToken('');
+          setIsLoggedIn(false);
+          return true;
+        }
+        return false;
+      };
+
       try {
         const res = await fetch(`${API_URL}/messages`, { headers });
+        if (checkAuthError(res.status)) return;
         if (res.ok) setMessages(await res.json());
       } catch (e) {}
 
       try {
         const res = await fetch(`${API_URL}/leads`, { headers });
+        if (checkAuthError(res.status)) return;
         if (res.ok) setLeads(await res.json());
       } catch (e) {}
 
       try {
         const res = await fetch(`${API_URL}/media`, { headers });
+        if (checkAuthError(res.status)) return;
         if (res.ok) setMedia(await res.json());
       } catch (e) {}
 
       try {
         const res = await fetch(`${API_URL}/visitors/stats`, { headers });
+        if (checkAuthError(res.status)) return;
         if (res.ok) setVisitorStats(await res.json());
       } catch (e) {}
 
       try {
         const res = await fetch(`${API_URL}/notifications`, { headers });
+        if (checkAuthError(res.status)) return;
         if (res.ok) setNotifications(await res.json());
       } catch (e) {}
     }
