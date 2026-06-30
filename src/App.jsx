@@ -18,6 +18,9 @@ import Footer from './components/Footer';
 import PageLoader from './components/PageLoader';
 // import CustomCursor from './components/CustomCursor';
 
+const API_URL = import.meta.env.VITE_API_URL || 
+  (import.meta.env.PROD ? 'https://manjuwebbackend.onrender.com/api' : 'http://localhost:5000/api');
+
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
@@ -36,7 +39,7 @@ export default function App() {
 
     // Track visitor metrics dynamically on load and hash navigation changes
     const trackVisitor = () => {
-      fetch('http://localhost:5000/api/visitors', { 
+      fetch(`${API_URL}/visitors`, { 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ page: window.location.pathname + window.location.hash || '/' })

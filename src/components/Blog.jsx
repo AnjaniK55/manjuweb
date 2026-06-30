@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { BookOpen, Search, Clock, ArrowRight, X, Sparkles, Heart } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || 
+  (import.meta.env.PROD ? 'https://manjuwebbackend.onrender.com/api' : 'http://localhost:5000/api');
 
 export default function Blog() {
   const [searchQuery, setSearchQuery] = useState('');

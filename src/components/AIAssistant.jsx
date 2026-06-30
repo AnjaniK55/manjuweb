@@ -6,7 +6,8 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || 
+  (import.meta.env.PROD ? 'https://manjuwebbackend.onrender.com/api' : 'http://localhost:5000/api');
 
 export default function AIAssistant() {
   const [isOpen, setIsOpen] = useState(false);
@@ -489,7 +490,7 @@ export default function AIAssistant() {
             <div className="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-[#0f0f14] to-[#111118] border-b border-white/[0.04] chatbot-header">
               <div className="flex items-center gap-3">
                 <div className="w-9 h-9 rounded-2xl border border-white/[0.08] overflow-hidden bg-zinc-900 flex items-center justify-center p-0.5">
-                  <img src="/chatbot_logo.png" alt="Manju Assistant" className="w-full h-full object-contain" />
+                  <img src="/chatbot_logo.png?v=2" alt="Manju Assistant" className="w-full h-full object-contain" />
                 </div>
                 <div>
                   <h4 className="text-[13px] font-bold text-zinc-900 dark:text-white tracking-tight">Manju AI Assistant</h4>
