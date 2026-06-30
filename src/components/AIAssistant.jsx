@@ -492,7 +492,7 @@ export default function AIAssistant() {
                   <img src="/chatbot_logo.png" alt="Manju Assistant" className="w-full h-full object-contain" />
                 </div>
                 <div>
-                  <h4 className="text-[13px] font-bold text-white tracking-tight">Manju AI Assistant</h4>
+                  <h4 className="text-[13px] font-bold text-zinc-900 dark:text-white tracking-tight">Manju AI Assistant</h4>
                   <span className="text-[10px] text-gold-500 font-medium flex items-center gap-1.5">
                     <span className="relative flex h-1.5 w-1.5">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-400 opacity-75"></span>
@@ -738,7 +738,7 @@ export default function AIAssistant() {
               <div className="p-5 h-[415px] overflow-y-auto space-y-6 custom-scrollbar bg-zinc-950/20">
                 
                 {/* Website Idea Generator */}
-                <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-3">
+                <div className="p-4 rounded-2xl bg-black/5 dark:bg-white/[0.03] border border-white/5 space-y-3">
                   <span className="text-[10px] uppercase tracking-widest font-extrabold text-gold-500 flex items-center gap-1.5 font-mono">
                     <Sparkles className="w-3.5 h-3.5" />
                     Idea Generator
@@ -749,7 +749,7 @@ export default function AIAssistant() {
                       placeholder="e.g. Gym, Coffee Shop, Dentist..."
                       value={nicheInput}
                       onChange={(e) => setNicheInput(e.target.value)}
-                      className="flex-1 px-3 py-2 text-[11.5px] rounded-lg bg-zinc-950 border border-white/5 focus:outline-none focus:border-gold-500 text-white"
+                      className="flex-1 px-3 py-2 text-[11.5px] rounded-lg bg-zinc-100 dark:bg-zinc-950 border border-white/5 focus:outline-none focus:border-gold-500 text-zinc-900 dark:text-white"
                     />
                     <button 
                       onClick={handleGenerateIdea}
@@ -760,11 +760,11 @@ export default function AIAssistant() {
                   </div>
                   {generatedIdea && (
                     <div className="pt-2.5 border-t border-white/5 space-y-1.5">
-                      <h5 className="text-[11.5px] font-bold text-white">{generatedIdea.title}</h5>
-                      <p className="text-[10.5px] text-zinc-400 leading-relaxed font-light">{generatedIdea.concept}</p>
+                      <h5 className="text-[11.5px] font-bold text-zinc-900 dark:text-white">{generatedIdea.title}</h5>
+                      <p className="text-[10.5px] text-zinc-650 dark:text-zinc-400 leading-relaxed font-light">{generatedIdea.concept}</p>
                       <ul className="space-y-1">
                         {generatedIdea.features.map((f, i) => (
-                          <li key={i} className="text-[9.5px] text-zinc-300 flex items-center gap-1.5">
+                          <li key={i} className="text-[9.5px] text-zinc-750 dark:text-zinc-300 flex items-center gap-1.5">
                             <span className="w-1 h-1 rounded-full bg-gold-500"></span>
                             <span>{f}</span>
                           </li>
@@ -775,7 +775,7 @@ export default function AIAssistant() {
                 </div>
 
                 {/* Tech Stack Selector */}
-                <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-3">
+                <div className="p-4 rounded-2xl bg-black/5 dark:bg-white/[0.03] border border-white/5 space-y-3">
                   <span className="text-[10px] uppercase tracking-widest font-extrabold text-gold-500 flex items-center gap-1.5 font-mono">
                     <Layers className="w-3.5 h-3.5" />
                     Tech Recommendations
@@ -784,7 +784,7 @@ export default function AIAssistant() {
                     <select
                       value={selectedTechProj}
                       onChange={(e) => setSelectedTechProj(e.target.value)}
-                      className="flex-1 px-2.5 py-2 text-[11.5px] rounded-lg bg-zinc-950 border border-white/5 text-zinc-300 focus:outline-none focus:border-gold-500"
+                      className="flex-1 px-2.5 py-2 text-[11.5px] rounded-lg bg-zinc-100 dark:bg-zinc-950 border border-white/5 text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-gold-500"
                     >
                       <option value="landing">Business Landing Page</option>
                       <option value="web-app">SaaS / Web Application</option>
@@ -820,7 +820,7 @@ export default function AIAssistant() {
                 </div>
 
                 {/* Business Growth Suggestions */}
-                <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-3">
+                <div className="p-4 rounded-2xl bg-black/5 dark:bg-white/[0.03] border border-white/5 space-y-3">
                   <span className="text-[10px] uppercase tracking-widest font-extrabold text-gold-500 flex items-center gap-1.5 font-mono">
                     <Zap className="w-3.5 h-3.5" />
                     Growth Suggestions
@@ -829,7 +829,7 @@ export default function AIAssistant() {
                     <select
                       value={growthCategory}
                       onChange={(e) => setGrowthCategory(e.target.value)}
-                      className="flex-1 px-2.5 py-2 text-[11.5px] rounded-lg bg-zinc-950 border border-white/5 text-zinc-300 focus:outline-none focus:border-gold-500"
+                      className="flex-1 px-2.5 py-2 text-[11.5px] rounded-lg bg-zinc-100 dark:bg-zinc-950 border border-white/5 text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-gold-500"
                     >
                       <option value="">Select industry category...</option>
                       <option value="retail">Retail / E-commerce</option>
@@ -856,7 +856,7 @@ export default function AIAssistant() {
                 </div>
 
                 {/* Cost & Hours Estimator */}
-                <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-4">
+                <div className="p-4 rounded-2xl bg-black/5 dark:bg-white/[0.03] border border-white/5 space-y-4">
                   <span className="text-[10px] uppercase tracking-widest font-extrabold text-gold-500 flex items-center gap-1.5 font-mono">
                     <DollarSign className="w-3.5 h-3.5" />
                     Cost Estimator
@@ -873,7 +873,7 @@ export default function AIAssistant() {
                           className={`flex-1 py-1.5 rounded text-[10px] uppercase font-bold border transition-colors cursor-pointer ${
                             estScale === s 
                               ? 'bg-gold-500 border-transparent text-black' 
-                              : 'bg-zinc-950 border-white/5 text-zinc-450 hover:text-zinc-100'
+                              : 'bg-zinc-100 dark:bg-zinc-950 border-white/5 text-zinc-600 dark:text-zinc-450 hover:text-zinc-900 dark:hover:text-zinc-100'
                           }`}
                         >
                           {s}
@@ -893,7 +893,7 @@ export default function AIAssistant() {
                           className={`flex-1 py-1.5 rounded text-[10px] border transition-colors cursor-pointer ${
                             estPages === p 
                               ? 'bg-gold-500 border-transparent text-black' 
-                              : 'bg-zinc-950 border-white/5 text-zinc-450 hover:text-zinc-100'
+                              : 'bg-zinc-100 dark:bg-zinc-950 border-white/5 text-zinc-600 dark:text-zinc-450 hover:text-zinc-900 dark:hover:text-zinc-100'
                           }`}
                         >
                           {p}
@@ -918,7 +918,7 @@ export default function AIAssistant() {
                           className={`p-2 rounded border text-left flex items-center justify-between cursor-pointer ${
                             estFeatures.includes(item.key)
                               ? 'bg-gold-500/10 border-gold-500/30 text-gold-500'
-                              : 'bg-zinc-950 border-white/5 text-zinc-400'
+                              : 'bg-zinc-100 dark:bg-zinc-950 border-white/5 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
                           }`}
                         >
                           <span>{item.label}</span>
@@ -938,12 +938,12 @@ export default function AIAssistant() {
                   {estimationResult && (
                     <div className="pt-3 border-t border-white/5 flex items-center justify-between font-mono text-[10px]">
                       <div>
-                        <span className="text-zinc-550 block">EST. BUDGET</span>
-                        <span className="text-white text-xs font-bold">{estimationResult.range}</span>
+                        <span className="text-zinc-500 dark:text-zinc-550 block">EST. BUDGET</span>
+                        <span className="text-zinc-900 dark:text-white text-xs font-bold">{estimationResult.range}</span>
                       </div>
                       <div className="text-right">
                         <span className="text-zinc-550 block">EST. TIMEFRAME</span>
-                        <span className="text-white text-xs font-bold">{estimationResult.hours}</span>
+                        <span className="text-zinc-900 dark:text-white text-xs font-bold">{estimationResult.hours}</span>
                       </div>
                     </div>
                   )}
