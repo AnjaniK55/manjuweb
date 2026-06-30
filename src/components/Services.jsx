@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import * as Icons from 'lucide-react';
+import { Globe, Cpu, ShoppingBag, Video, Palette, Sparkles, ArrowUpRight, HelpCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
+
+const Icons = { Globe, Cpu, ShoppingBag, Video, Palette, Sparkles, ArrowUpRight, HelpCircle };
 
 const API_URL = import.meta.env.VITE_API_URL || 
   (import.meta.env.PROD ? 'https://manjuwebbackend.onrender.com/api' : 'http://localhost:5000/api');

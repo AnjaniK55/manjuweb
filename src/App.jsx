@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -11,12 +11,13 @@ import Projects from './components/Projects';
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import AIAssistant from './components/AIAssistant';
-import AdminDashboard from './components/AdminDashboard';
 import InquiryModal from './components/InquiryModal';
 import Blog from './components/Blog';
 import Footer from './components/Footer';
 import PageLoader from './components/PageLoader';
 // import CustomCursor from './components/CustomCursor';
+
+const AdminDashboard = lazy(() => import('./components/AdminDashboard'));
 
 const API_URL = import.meta.env.VITE_API_URL || 
   (import.meta.env.PROD ? 'https://manjuwebbackend.onrender.com/api' : 'http://localhost:5000/api');
@@ -108,7 +109,13 @@ export default function App() {
 
       {/* Admin Dashboard command panel */}
       {isAdminOpen && (
-        <AdminDashboard onClose={() => setIsAdminOpen(false)} />
+        <Suspense fallback={
+          <div className="fixed inset-0 z-[100] bg-zinc-950/80 backdrop-blur-sm flex items-center justify-center">
+            <div className="w-12 h-12 rounded-full border-4 border-gold-500/20 border-t-gold-500 animate-spin"></div>
+          </div>
+        }>
+          <AdminDashboard onClose={() => setIsAdminOpen(false)} />
+        </Suspense>
       )}
 
       {/* Footer */}
