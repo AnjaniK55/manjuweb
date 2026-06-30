@@ -366,3 +366,14 @@ body::before {
   }
 }
 */
+
+/* Fix native select option text visibility in dark/light modes */
+select option {
+  background-color: #0a0a0f !important;
+  color: #e4e4e7 !important;
+}
+
+.light select option {
+  background-color: #ffffff !important;
+  color: #18181b !important;
+}
