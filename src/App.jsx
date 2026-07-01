@@ -57,6 +57,46 @@ export default function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const syncOfflineData = async () => {
+      try {
+        const offlineMsgs = JSON.parse(localStorage.getItem('contact_messages') || '[]');
+        if (offlineMsgs.length > 0) {
+          console.log(`>>> [SYNC] Syncing ${offlineMsgs.length} offline contact messages...`);
+          for (const msg of offlineMsgs) {
+            await fetch(`${API_URL}/messages`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(msg)
+            });
+          }
+          localStorage.removeItem('contact_messages');
+        }
+
+        const offlineLeads = JSON.parse(localStorage.getItem('saved_crm_leads') || '[]');
+        if (offlineLeads.length > 0) {
+          console.log(`>>> [SYNC] Syncing ${offlineLeads.length} offline chatbot leads...`);
+          for (const lead of offlineLeads) {
+            const { id, ...leadPayload } = lead;
+            await fetch(`${API_URL}/leads`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(leadPayload)
+            });
+          }
+          localStorage.removeItem('saved_crm_leads');
+        }
+        
+        window.dispatchEvent(new CustomEvent('agency_content_updated'));
+      } catch (e) {
+        console.warn('>>> [SYNC] Failed to sync offline items:', e);
+      }
+    };
+    
+    const timer = setTimeout(syncOfflineData, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="bg-zinc-950 text-zinc-100 min-h-screen relative font-sans transition-colors duration-500">
       {/* Page Loading Sequence Overlay */}
